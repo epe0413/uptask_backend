@@ -53,4 +53,8 @@ const autenticar = async (req, res) => {
     
 }
 
-export { registrar, autenticar };
+const confirmar = async(req, res)=> {
+    console.log(req.params.token)
+}
+
+export { registrar, autenticar, confirmar };
