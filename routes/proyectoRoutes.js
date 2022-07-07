@@ -9,23 +9,23 @@ import {
     eliminarColaborador,
     obtenerTareas
 } from '../controllers/proyectoController.js'
-import checkOut from '../middleware/checkAuth.js'
+import checkAuth from '../middleware/checkAuth.js'
 
 const router = express.Router();
 
 router
     .route('/')
-    .get(checkOut, obtenerProyectos)
-    .post(checkOut, nuevoProyecto);
+    .get(checkAuth, obtenerProyectos)
+    .post(checkAuth, nuevoProyecto);
 
 router
     .route('/:id')
-    .get(checkOut, obtenerProyecto)
-    .put(checkOut, editarProyecto)
-    .delete(checkOut, eliminarProyecto);
+    .get(checkAuth, obtenerProyecto)
+    .put(checkAuth, editarProyecto)
+    .delete(checkAuth, eliminarProyecto);
 
-router.get('/tarea/:id', checkOut, obtenerTareas);
-router.post('/agregar-colaborador/:id', checkOut, agregarColaborador);
-router.post ('/eliminar-colaborador/:id', checkOut, eliminarColaborador);
+router.get('/tarea/:id', checkAuth, obtenerTareas);
+router.post('/agregar-colaborador/:id', checkAuth, agregarColaborador);
+router.post ('/eliminar-colaborador/:id', checkAuth, eliminarColaborador);
 
 export default router;
